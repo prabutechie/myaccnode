@@ -1,16 +1,27 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import React from 'react'
 import * as yup from 'yup'
+import { http } from '../../axios'
 
 
-function TitleForm() {
+function TitleForm({Reload}) {
 
     const initialValues = {
         title:"",
         type:""
     }
-    const submit=(values)=>{
+    const submit=(values,props)=>{
         console.log(values)
+        http.post("title",values)
+        .then(res=>{
+            console.log("Response",res.data)
+            Reload(res.data)
+            props.resetForm()
+            
+        })
+        .catch(err=>{
+            console.log("Error",err)
+        })
     }
     const validationSchema = yup.object({
         title:yup.string().required("Enter Title"),
@@ -40,7 +51,7 @@ function TitleForm() {
                         <ErrorMessage name="type" />
                     </div>
                     <div className="w3-center m-2">
-                        <button type="submit" className="btn btn-success mb-3">Submit</button>
+                        <button type="submit" className="btn btn-success mb-3" data-dismiss="modal">Submit</button>
                     </div>    
                     
                 </Form>

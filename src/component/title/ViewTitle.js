@@ -1,25 +1,41 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import './index.css'
 import {useDispatch} from 'react-redux'
 import {setTitle} from '../../redux/Action'
+import {http} from '../../axios'
+import {MyDate,MyTime} from '../../Custom/MyDate'
+function ViewTitle({reload,TitleStats}) {
 
-function ViewTitle() {
+    const [data,setData] = useState([])
+    useEffect(()=>{
+        http.get("title")
+        .then(res=>{
+            setData(res.data)
+            StatsMethod(res.data)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    },[reload])
 
-    const data = [
-        {
-            title: "Tourist Packages i am legend of tommorow so you shutup",
-            credit: "5986",
-            debit: "8784",
-            available: "58745"
-        },
-        {
-            title: "Tourist Karnataka",
-            credit: "5986",
-            debit: "8784",
-            available: "58745"
+    const StatsMethod =(resdata)=>{
+        let debit=0, credit=0, available=0,x
+        for(x of resdata){
+            debit=x.debit
+            credit = x.credit
+            available = x.available
         }
-    ]
+        const stats = {
+            debit:debit,
+            credit:credit,
+            available:available
+        }
+        TitleStats(stats)
+    }
+    
+
+    
     const dispatch = useDispatch()
     return (
         <div className="w3-container">
@@ -31,8 +47,8 @@ function ViewTitle() {
                             <div className="card mb-3" id="troot" >                           
                                 
                                 <div id="ttop">
-                                    <p className="pl-1 pt-1 pr-1 w3-right small w3-text-gray m-0">07:00 am</p>
-                                    <p className="pr-1 pt-1 pr-1 w3-right small w3-text-gray m-0">29-mon-2020</p>
+                                    <p className="pl-1 pt-1 pr-1 w3-right small w3-text-gray m-0">{MyTime(data.date)}</p>
+                                    <p className="pr-1 pt-1 pr-1 w3-right small w3-text-gray m-0">{MyDate(data.date)}</p>
                                 </div>
                                 <div id="middle">
                                    <p className="pl-3 w3-left m-0">{data.title}</p>
