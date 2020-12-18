@@ -14,3 +14,20 @@ export const MyDate = (data,formate) =>{
     return finalDate
     
 }
+
+export const MyTime = (data)=>{
+    const fulldate = new Date(data)
+
+    const hour = fulldate.getHours()
+    const minutes = fulldate.getMinutes()
+
+    if(hour < 12){
+        const FinalTime = `${hour}:${minutes} am`  
+        return FinalTime
+    }
+    else{
+        const FinalTime = `${hour-12}:${minutes} pm`  
+        return FinalTime
+    }
+
+} 
