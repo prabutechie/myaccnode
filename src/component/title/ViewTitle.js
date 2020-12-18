@@ -22,15 +22,16 @@ function ViewTitle({reload,TitleStats}) {
     const StatsMethod =(resdata)=>{
         let debit=0, credit=0, available=0,x
         for(x of resdata){
-            debit=x.debit
-            credit = x.credit
-            available = x.available
+            debit+=x.debit
+            credit += x.credit
+            available += x.available
         }
         const stats = {
             debit:debit,
             credit:credit,
             available:available
         }
+        console.log(stats)
         TitleStats(stats)
     }
     
