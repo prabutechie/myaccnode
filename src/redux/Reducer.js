@@ -1,19 +1,22 @@
-// import {type} from './Type'
-// import { Switch } from 'react-router-dom'
+import { title, reason } from './Type'
 
+const initialState = {
+    title: "",
+    reason: ""
+}
 
-// const inittialState = {
-//     typeData:""
-// }
+const Reducer = (state = initialState, action)=>{
+    switch (action.type) {
+        case title:
+            return {
+                title: action.data
+            }
+        case reason:
+            return {
+                reason: action.data
+            }
+        default: return state
+    }
+}
 
-// const Reducer = (state = inittialState, action ){
-//     switch(action.type){
-//         case type:
-//             return {
-//                 typeData:action.data     
-//             }
-//         default : return state 
-//     }
-// }
-
-// export default Reducer
+export default Reducer
