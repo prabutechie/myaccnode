@@ -1,1 +1,2 @@
-// export const type="type"
+export const title="title"
+export const reason="reason"
