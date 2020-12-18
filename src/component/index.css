@@ -1,0 +1,23 @@
+
+#sroot{
+    display:flex;
+    flex-direction: row;
+    /* justify-content: space-around;    */
+    
+}
+#sroot > div{
+    flex: 0.4;
+    /* padding-top: 10px;
+    padding-bottom: 10px; */
+}
+
+#tdown{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#tdown p {
+    margin: 0;
+    padding-top: 5px;
+    color: gray;
+}
