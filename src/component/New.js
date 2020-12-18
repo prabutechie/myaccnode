@@ -2,7 +2,7 @@ import React from 'react'
 import TitleForm from './title/TitleForm'
 import ReasonForm from './reason/ReasonForm'
 
-function New({target}) {
+function New({target,Reload}) {
     return (
         <div className="w3-right w3-container">
             <button className="m-3 btn w3-blue" data-toggle="modal" data-target={target}>+New</button> 
@@ -10,7 +10,7 @@ function New({target}) {
             <div className="modal" id="titleform">
                 <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
-                        <TitleForm />
+                        <TitleForm Reload={Reload} />
                     </div>
                 </div>
             </div>
@@ -18,7 +18,7 @@ function New({target}) {
             <div className="modal" id="reasonform">
                 <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
-                        <ReasonForm />
+                        <ReasonForm Reload={Reload} />
                     </div>
                 </div>
             </div>
