@@ -1,0 +1,23 @@
+#vrmiddle{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#vrmiddle_left{
+    flex:0.9
+}
+#vrmiddle_right{
+    flex:0.1;
+    display:flex;
+    justify-content:space-between ;
+    align-items: center;
+}
+#vrmiddle_right>button{
+   border: 0;
+   background-color: white;
+   
+}
+#vrmiddle_right>button>:only-child{
+    font-size: 18px;    
+ }
+

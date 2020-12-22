@@ -2,15 +2,22 @@ import { ErrorMessage, Field, Form, Formik } from 'formik'
 import React from 'react'
 import * as yup from 'yup'
 
-function ReasonForm() {
+function ReasonForm({editData,CancelEdit}) {
 
+    console.log("editdata",editData)
     const initialValues = {
         reason:"",
         amount:"",
         action:""
     }
     const submit=(values,props)=>{
-        console.log(values)
+        if(editData){
+            console.log(values)
+        }
+        else{
+
+        }
+        
         props.resetForm()
     }
     const validationSchema = yup.object({
@@ -22,9 +29,10 @@ function ReasonForm() {
     return (
         <div className="w3-container">
             <Formik
-                initialValues={initialValues}
+                initialValues={editData || initialValues}
                 onSubmit={submit}
                 validationSchema={validationSchema}
+                enableReinitialize
             >
                 <div>
                     <Form>
@@ -49,6 +57,7 @@ function ReasonForm() {
                         </div>
                         <div className="w3-center">
                             <button type="submit" className ="btn btn-success mt-2 mb-3">Submit</button>
+                            <button type="button" className ="btn btn-danger mt-2 mb-3 ml-2" data-dismiss="modal" onClick={CancelEdit}>Cancel</button>
                         </div>
                     </Form>
                 </div>
