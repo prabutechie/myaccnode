@@ -4,6 +4,8 @@ const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 
+const Port = process.env.PORT || 4000
+
 app.use(cors());
 app.use(morgan("dev")); 
 app.use(express.json())
@@ -18,7 +20,10 @@ app.get("/",(req,res)=>{
     res.json("Root")
 })
 
-mongoose.connect("mongodb://localhost:27017/",{ useNewUrlParser: true, useUnifiedTopology: true  },(err)=>{
+const url ="mongodb+srv://root:dineshmjs@cluster0-y8uer.gcp.mongodb.net/myacc"
+// const url = "mongodb://localhost:27017/myacc" 
+
+mongoose.connect(url,{ useNewUrlParser: true, useUnifiedTopology: true  },(err)=>{
     if(!err){
         console.log("Mongodb Connectced")
     }
@@ -27,7 +32,7 @@ mongoose.connect("mongodb://localhost:27017/",{ useNewUrlParser: true, useUnifie
     }
 })
 
-app.listen(4000,()=>{
-    console.log("Server run port 4000")
+app.listen(Port, () => {
+    console.log("Server run port 2000")
 })
 
