@@ -1,8 +1,12 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import React from 'react'
 import * as yup from 'yup'
+import {http} from '../../axios'
+import {useSelector} from 'react-redux'
 
-function ReasonForm({editData,CancelEdit}) {
+function ReasonForm({editData,CancelEdit,Reload}) {
+
+    const title = useSelector(state => state.title)
 
     console.log("editdata",editData)
     const initialValues = {
@@ -11,11 +15,24 @@ function ReasonForm({editData,CancelEdit}) {
         action:""
     }
     const submit=(values,props)=>{
+        const postData = {title,...values}
         if(editData){
-            console.log(values)
+            http.put("reason",values)
+            .then(res=>{
+                Reload(res.data)
+            })
+            .catch(err=>{
+                console.log("Error",err)
+            })
         }
         else{
-
+            http.post("reason",postData)
+            .then(res=>{
+                Reload(res.data)
+            })
+            .catch(err=>{
+                console.log("Error",err)
+            })
         }
         
         props.resetForm()

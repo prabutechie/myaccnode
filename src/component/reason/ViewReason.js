@@ -8,40 +8,20 @@ import ReasonForm from './ReasonForm'
 
 function ViewReason({ reload, Reload }) {
 
-    const testData = [{
-        _id: 1,
-        reason: "Dinesh",
-        title: "title",
-        action: "credit",
-        debit: 0,
-        credit: 1000,
-        available: 1000,
-        date: Date.now()
-    },
-    {
-        _id: 2,
-        reason: "Dinesh",
-        title: "title",
-        action: "debit",
-        amount:100,
-        debit: 100,
-        credit: 0,
-        available: 1000,
-        date: Date.now()
-    }
-    ]
+    const title = useSelector(state => state.title)
+    
     const [edit, setEdit] = useState("")
-    const [data, setData] = useState(testData)
+    const [data, setData] = useState([])
     const [editData, setEditData] = useState()
 
     useEffect(() => {
-        // http.get("title")
-        // .then(res=>{
-        //     setData(res.data)            
-        // })
-        // .catch(err=>{
-        //     console.log("Error",err)
-        // })
+        http.get("reason",{params:{title:title}})
+        .then(res=>{
+            setData(res.data)            
+        })
+        .catch(err=>{
+            console.log("Error",err)
+        })
     }, [reload])
 
     const EditButton =(id,data)=>{
@@ -60,7 +40,7 @@ function ViewReason({ reload, Reload }) {
     }
 
 
-    const title = useSelector(state => state.title)
+    
     return (
         <div className="w3-container">
             <p className="w3-center w3-text-pink"><b>{title}</b></p>
@@ -84,7 +64,7 @@ function ViewReason({ reload, Reload }) {
                                             </div>
                                             <div id="vrmiddle">
                                                 <div id="vrmiddle_left">
-                                                    <p className="pl-3 w3-left m-0">{data.title}</p>
+                                                    <p className="pl-3 w3-left m-0">{data.reason}</p>
                                                 </div>
                                                 <div id="vrmiddle_right" >
                                                     <button onClick={() => EditButton(data._id,data)}><Edit className="w3-text-blue" /></button>

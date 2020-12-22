@@ -17,7 +17,7 @@ function Reason() {
         <div>
             <Head />
             {/* <Stats credit="48754" debit="54875" available="58784"  /> */}
-            <New target="#reasonform" />
+            <New target="#reasonform" Reload={Reload} />
             <ViewReason reload={reload} Reload={Reload} />
         </div>
     )
