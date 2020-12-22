@@ -18,9 +18,9 @@ function Title() {
     return (
         <div>
             <Head />
-            <Stats stats={stats} />
+            {/* <Stats stats={stats} /> */}
             <New target="#titleform" Reload={Reload} />
-            <ViewTitle reload={reload} TitleStats={TitleStats} />
+            <ViewTitle Reload={Reload} reload={reload} TitleStats={TitleStats} />
         </div>
     )
 }

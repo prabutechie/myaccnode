@@ -11,7 +11,8 @@ function TitleForm({Reload}) {
         type:""
     }
     const submit=(values,props)=>{
-        console.log(values)
+        console.log("submit")
+        
         http.post("title",values)
         .then(res=>{
             console.log("Response",res.data)
@@ -51,7 +52,7 @@ function TitleForm({Reload}) {
                         <ErrorMessage name="type" />
                     </div>
                     <div className="w3-center m-2">
-                        <button type="submit" className="btn btn-success mb-3" data-dismiss="modal">Submit</button>
+                        <button type="submit" className="btn btn-success mb-3">Submit</button>
                     </div>    
                     
                 </Form>
