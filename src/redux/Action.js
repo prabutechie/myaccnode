@@ -1,9 +1,10 @@
 import {title,reason} from './Type'
 
-export const setTitle =(data) =>{
+export const setTitle =(t,id) =>{
     return {
         type:title,
-        data:data
+        title:t,
+        id:id
     }
 }
 
