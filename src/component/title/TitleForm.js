@@ -1,10 +1,12 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik'
-import React from 'react'
+import React,{useState} from 'react'
 import * as yup from 'yup'
 import { http } from '../../axios'
 
 
 function TitleForm({Reload}) {
+
+    const [buttonClose, setbuttonClose] = useState(false)
 
     const initialValues = {
         title:"",
@@ -18,6 +20,7 @@ function TitleForm({Reload}) {
             console.log("Response",res.data)
             Reload(res.data)
             props.resetForm()
+            setbuttonClose(true)
             
         })
         .catch(err=>{
@@ -52,7 +55,10 @@ function TitleForm({Reload}) {
                         <ErrorMessage name="type" />
                     </div>
                     <div className="w3-center m-2">
-                        <button type="submit" className="btn btn-success mb-3">Submit</button>
+                        {
+                            buttonClose ? (<button type="submit" data-dismiss="modal" className="btn btn-danger mb-3">Close</button>)
+                            :(<button type="submit" className="btn btn-success mb-3">Submit</button>)
+                        }
                     </div>    
                     
                 </Form>

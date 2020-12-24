@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './index.css'
 import { useDispatch } from 'react-redux'
@@ -7,37 +7,14 @@ import { http } from '../../axios'
 import { MyDate, MyTime } from '../../Custom/MyDate'
 import { CheckCircle, Delete, Edit } from '@material-ui/icons'
 
-function ViewTitle({ reload, TitleStats, Reload }) {
+function ViewTitle({ Reload, data }) {
 
-    const [data, setData] = useState([])
+    
     const [edit, setEdit] = useState(false)
     const [editTitle, setEditTitle] = useState("")
-    useEffect(() => {
-        http.get("title")
-            .then(res => {
-                setData(res.data)
-                StatsMethod(res.data)
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }, [reload])
+    
 
-    const StatsMethod = (resdata) => {
-        let debit = 0, credit = 0, available = 0, x
-        for (x of resdata) {
-            debit += x.debit
-            credit += x.credit
-            available += x.available
-        }
-        const stats = {
-            debit: debit,
-            credit: credit,
-            available: available
-        }
-        console.log(stats)
-        TitleStats(stats)
-    }
+    
 
     const EditTitle = (e) => {
         e.preventDefault()
@@ -105,28 +82,28 @@ function ViewTitle({ reload, TitleStats, Reload }) {
                                         )
                                             :
                                             (
-                                                <Link key={index} to="/reason" id="link" onClick={()=>dispatch(setTitle(data.title))} >
+                                                <Link key={index} to="/reason" id="link" onClick={()=>dispatch(setTitle(data.title,data._id))} >
                                                     <p className="pl-3 w3-left m-0">{data.title}</p>
                                                 </Link>
                                             )
                                     }
                                 </div>
-                                <div className="middle_right">
-                                    <p className="pr-3" onClick={() => EditButton(data._id, data.title)}><Edit /></p>
-                                    <p onClick={() => DeleteTitle(data._id)}><Delete /></p>
+                                <div className="middle_right mr-2">
+                                    <p className="pr-3" onClick={() => EditButton(data._id, data.title)}><Edit className="w3-text-teal"  style={{fontSize: "18px"}}/></p>
+                                    <p onClick={() => DeleteTitle(data._id)}><Delete className="w3-text-pink" style={{fontSize: "18px"}}/></p>
                                 </div>
 
 
                             </div>
                             <div id="tdown" className="w3-light-gray">
                                 <div>
-                                    <p>Credit : {data.credit}</p>
+                                    <p className="w3-text-green"> +{data.credit}</p>
                                 </div>
                                 <div>
-                                    <p>Debit : {data.debit}</p>
+                                    <p className="w3-text-red"> -{data.debit}</p>
                                 </div>
                                 <div>
-                                    <p>Available : {data.available}</p>
+                                    <p className="w3-text-blue">{data.available}</p>
                                 </div>
                             </div>
                         </div>
