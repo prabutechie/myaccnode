@@ -20,13 +20,27 @@ export const MyTime = (data)=>{
 
     const hour = fulldate.getHours()
     const minutes = fulldate.getMinutes()
+    let FinalTime
 
     if(hour < 12){
-        const FinalTime = `${hour}:${minutes} am`  
+        if(minutes === 0){
+            FinalTime = `${hour}:00} am`  
+        }
+        else{
+            FinalTime = `${hour}:${minutes} am`  
+        }
+        
         return FinalTime
     }
     else{
-        const FinalTime = `${hour-12}:${minutes} pm`  
+        
+        if(minutes===0){
+            FinalTime = `${hour-12}:00 pm`  
+        }
+        else{
+            FinalTime = `${hour-12}:${minutes} pm`  
+        }
+        
         return FinalTime
     }
 
