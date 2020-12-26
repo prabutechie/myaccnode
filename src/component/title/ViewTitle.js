@@ -9,6 +9,8 @@ import { CheckCircle, Delete, Edit } from '@material-ui/icons'
 
 function ViewTitle({ Reload, data }) {
 
+   
+
     
     const [edit, setEdit] = useState(false)
     const [editTitle, setEditTitle] = useState("")

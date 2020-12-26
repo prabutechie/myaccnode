@@ -4,6 +4,7 @@ import New from '../New'
 import Stats from '../Stats'
 import ViewTitle from './ViewTitle'
 import { http } from '../../axios'
+import {useSelector} from 'react-redux'
 
 
 function Title() {
@@ -19,8 +20,10 @@ function Title() {
         setStats(data)
     }
 
+    const uid = useSelector(state => state.login.uid)
+
     useEffect(() => {
-        http.get("title")
+        http.get("title",{params:{uid:uid}})
             .then(res => {
                 setData(res.data)
             })

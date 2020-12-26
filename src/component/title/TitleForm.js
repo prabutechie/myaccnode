@@ -2,20 +2,26 @@ import { ErrorMessage, Field, Form, Formik } from 'formik'
 import React,{useState} from 'react'
 import * as yup from 'yup'
 import { http } from '../../axios'
+import {useSelector} from 'react-redux'
 
 
 function TitleForm({Reload}) {
 
     const [buttonClose, setbuttonClose] = useState(false)
 
+    const uid = useSelector(state => state.login.uid)
+    console.log("uid",uid)
+
     const initialValues = {
         title:"",
         type:""
     }
+    // 64202866521
     const submit=(values,props)=>{
         console.log("submit")
+        const postData = {uid,...values}
         
-        http.post("title",values)
+        http.post("title",postData)
         .then(res=>{
             console.log("Response",res.data)
             Reload(res.data)
