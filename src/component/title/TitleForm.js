@@ -10,7 +10,7 @@ function TitleForm({Reload}) {
     const [buttonClose, setbuttonClose] = useState(false)
 
     const uid = useSelector(state => state.login.uid)
-    console.log("uid",uid)
+   
 
     const initialValues = {
         title:"",
@@ -18,12 +18,12 @@ function TitleForm({Reload}) {
     }
     // 64202866521
     const submit=(values,props)=>{
-        console.log("submit")
+       
         const postData = {uid,...values}
         
         http.post("title",postData)
         .then(res=>{
-            console.log("Response",res.data)
+
             Reload(res.data)
             props.resetForm()
             setbuttonClose(true)

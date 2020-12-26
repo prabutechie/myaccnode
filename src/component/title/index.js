@@ -30,7 +30,7 @@ function Title() {
             .catch(err => {
                 console.log(err)
             })
-    }, [reload])
+    }, [reload,uid])
 
     useEffect(()=>{
         let debit = 0, credit = 0, available = 0, x
@@ -44,7 +44,7 @@ function Title() {
             credit: credit,
             available: available
         }
-        console.log(stats)
+       
         setStats(stats)
     },[data])
 

@@ -16,7 +16,7 @@ function Profile() {
     }
 
     const Verify = ()=>{
-        user.sendEmailVerification().then(()=>console.log("Successfully send Link")).catch(err=>console.log(err))
+        user.sendEmailVerification().then(()=>alert("Successfully send Link")).catch(err=>alert(err))
     }
 
     const Delete = ()=>{

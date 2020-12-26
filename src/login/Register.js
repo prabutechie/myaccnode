@@ -23,7 +23,7 @@ function Register({NewUser}) {
     const dispatch = useDispatch()
 
     const submit = (values, props) => {
-        console.log(values)
+       
         const { username, email, password } = values
         
         auth.createUserWithEmailAndPassword(email, password)

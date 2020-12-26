@@ -23,7 +23,7 @@ function ViewReason({ Reload,data,title }) {
         setEdit(id)
         setEditData({ reason, amount, id, action })
         setUpdate(true)
-        console.log(id, data)
+       
     }
 
     const CancelEdit = (data) => {

@@ -50,7 +50,7 @@ function Reason() {
             credit: credit,
             available: credit - debit
         }
-        console.log(stats)
+
         setStats(stats)
     }, [data])
 
