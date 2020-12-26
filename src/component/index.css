@@ -22,3 +22,18 @@
     padding-top: 5px;
     color: gray;
 }
+
+#head{
+    display: flex;
+    align-items: center;    
+}
+#headtitle{
+    padding-top: 10px;
+    flex: 0.6;
+}
+#headprofile{
+    flex: 0.4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
