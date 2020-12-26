@@ -7,18 +7,14 @@ import { Logout, LoginData } from './redux/Action';
 
 
 
-// console.log("user",user)
+
 
 
 
 function App() {
 
   const dispatch = useDispatch()
-
-  // console.log("auth",auth.currentUser)
-  const profile = auth.currentUser
-  console.log("profile",profile)
-
+  
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
@@ -33,8 +29,7 @@ function App() {
           })
         )
       }
-      else {
-        console.log("else")
+      else {       
         dispatch(Logout())
       }
     })
