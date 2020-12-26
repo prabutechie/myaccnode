@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux'
 function ReasonForm({ initialValues, CancelEdit, Reload, Reset, update }) {
 
     const title = useSelector(state => state.titleid)
-    
 
     
 

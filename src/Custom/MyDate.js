@@ -23,8 +23,8 @@ export const MyTime = (data)=>{
     let FinalTime
 
     if(hour < 12){
-        if(minutes === 0){
-            FinalTime = `${hour}:00} am`  
+        if(minutes <= 9){
+            FinalTime = `${hour}:0${minutes}} am`  
         }
         else{
             FinalTime = `${hour}:${minutes} am`  
@@ -34,8 +34,8 @@ export const MyTime = (data)=>{
     }
     else{
         
-        if(minutes===0){
-            FinalTime = `${hour-12}:00 pm`  
+        if(minutes <= 9){
+            FinalTime = `${hour-12}:0${minutes} pm`  
         }
         else{
             FinalTime = `${hour-12}:${minutes} pm`  
