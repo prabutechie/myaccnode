@@ -8,9 +8,18 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './w3.css'
 
+import { Provider } from 'react-redux'
+import store from './redux/Store'
+
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
+      
+    
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
